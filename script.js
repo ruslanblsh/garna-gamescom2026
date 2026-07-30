@@ -271,14 +271,14 @@
   function renderDay(day) {
     if (!day) {
       return '<div class="empty-state"><h3>Nothing scheduled here yet</h3>' +
-             "<p>Pick another day above — we keep this page updated through the show.</p></div>";
+             "<p>Pick another day above. We keep this page updated through the show.</p></div>";
     }
 
     var title, sub;
     if (day.iso === "tba") {
       title = "Date to be announced";
       sub = day.items.length + (day.items.length === 1 ? " event" : " events") +
-            " — organisers have not published a date yet";
+            ", organisers haven't announced a date yet";
     } else {
       title = day.weekday + ", " + day.dayNum + " " + day.month;
       sub = day.items.length + (day.items.length === 1 ? " event" : " events");
@@ -340,7 +340,7 @@
     if (!days.length) {
       if (listEl) {
         listEl.innerHTML = '<div class="empty-state"><h3>No events loaded</h3>' +
-          "<p>We could not read the schedule. Please try refreshing the page.</p></div>";
+          "<p>The schedule didn't come through. A refresh usually fixes it.</p></div>";
       }
       return;
     }
@@ -377,8 +377,8 @@
 
     if (noteEl) {
       noteEl.textContent = data.live
-        ? "Live schedule — this page reads the Garna events sheet every time it loads."
-        : "Showing the last saved copy of the schedule. The live sheet could not be reached.";
+        ? "The schedule is read from our events sheet every time this page loads, so it is always the current one."
+        : "We couldn't reach the live sheet, so this is the last saved copy of the schedule.";
     }
   }
 
@@ -395,8 +395,8 @@
       .catch(function (err) {
         if (window.console) console.error("[gamescom] render failed:", err);
         if (listEl) {
-          listEl.innerHTML = '<div class="empty-state"><h3>Something went wrong</h3>' +
-            "<p>We could not display the schedule. Please refresh the page.</p></div>";
+          listEl.innerHTML = '<div class="empty-state"><h3>Something broke</h3>' +
+            "<p>The schedule didn't render. A refresh usually fixes it.</p></div>";
         }
       });
 
