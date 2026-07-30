@@ -1,0 +1,95 @@
+<!--
+  Gamescom 2026 Side Events — page body only.
+
+  This is the block to drop into the garna.io Astro layout, between the real
+  <Header /> and <Footer /> components. Nothing here depends on the preview
+  chrome in index.html.
+
+  Requires, in this order:
+    <link rel="stylesheet" href="styles.css">
+    <script src="events-data.js"></script>
+    <script src="script.js" defer></script>
+
+  The schedule is read at runtime from the Google Sheet configured at the top
+  of script.js. Editing a row in that sheet updates this page — no deploy.
+-->
+
+<div class="page-grid" aria-hidden="true"></div>
+
+<main>
+  <!-- Hero ---------------------------------------------------------------- -->
+  <section class="hero">
+    <div class="container">
+      <span class="kicker reveal">
+        <span class="dot"></span>
+        Gamescom 2026 · Cologne · 23–30 August
+      </span>
+
+      <h1 class="reveal">Your Gamescom 2026 <em>side events</em> guide</h1>
+
+      <p class="hero-lead reveal">
+        Every side event of the week in one place — mixers, dinners, pitch sessions,
+        pavilion receptions and the parties that run until morning. We checked each
+        link, noted how to get in, and keep the list current through the show.
+      </p>
+
+      <div class="hero-actions reveal">
+        <a class="btn btn-primary" href="#schedule">See the schedule</a>
+        <a class="btn btn-secondary" href="assets/Garna-Gamescom-2026-Side-Events.pdf" download>
+          Download as PDF
+        </a>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div class="stat"><strong id="statEvents">105</strong><span>side events</span></div>
+        <div class="stat"><strong id="statDays">8</strong><span>days covered</span></div>
+        <div class="stat"><strong>1</strong><span>city — Cologne</span></div>
+      </div>
+
+      <p class="hero-meta reveal">
+        Access rules and dates come from the organisers and can change. Always confirm on the event page.
+      </p>
+    </div>
+  </section>
+
+  <!-- Day navigator ------------------------------------------------------- -->
+  <nav class="day-nav" id="schedule" aria-label="Choose a day">
+    <div class="container">
+      <div class="day-nav-inner" id="dayNav"></div>
+    </div>
+  </nav>
+
+  <!-- Events -------------------------------------------------------------- -->
+  <section class="events-section">
+    <div class="container">
+      <div id="eventsBody"></div>
+      <p class="source-note" id="sourceNote"></p>
+    </div>
+  </section>
+
+  <!-- Payroll offer ------------------------------------------------------- -->
+  <section class="offer-section">
+    <div class="container">
+      <div class="offer-card reveal">
+        <div>
+          <span class="offer-eyebrow">While you are here</span>
+          <h2>Paying a team across borders — and paying too much for it?</h2>
+          <p>
+            Garna handles payroll and contractor payments in 150+ countries: local currencies,
+            cards, wallets and crypto, with compliance and reporting in one place. If that
+            is on your list for after Cologne, we are happy to walk you through it.
+          </p>
+        </div>
+        <div class="offer-actions">
+          <a class="btn btn-primary"
+             href="mailto:hello@garna.io?subject=Book%20a%20demo%20—%20Gamescom%202026">
+            Book a demo
+          </a>
+          <a class="btn btn-secondary" href="https://garna.io/en" target="_blank" rel="noopener">
+            What Garna does
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
