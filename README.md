@@ -49,6 +49,8 @@ No deploy, no PR, no developer needed.
 
 | File | What it is | Ships to garna.io? |
 |---|---|---|
+| `gamescom-side-events.standalone.html` | **The whole page as one file.** CSS, JS and fallback data inlined. Nothing else needed — open it, email it, drop it on any host. Generated, don't hand-edit. | Optional |
+| `build-single-file.js` | Regenerates the file above from the sources. `node build-single-file.js` | No |
 | `section.html` | **The part that ships.** Page body only — hero, day navigator, event list, payroll block. No header or footer. | Yes |
 | `styles.css` | All styles. Two blocks are marked `SITE CHROME` — those are preview-only. | Yes (minus the `SITE CHROME` blocks) |
 | `script.js` | Data loading, day grouping, rendering, mobile menu. | Yes |
@@ -75,6 +77,24 @@ cd garna-gamescom2026
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
+
+### Just want one file?
+
+`gamescom-side-events.standalone.html` is the entire page — markup, styles, script and the fallback
+event data — in a single 86 KB file. No repo, no build, no server. It still reads the live sheet on
+every load, so it does **not** go stale when events change.
+
+It only pulls two things from the network: the Manrope font from Google Fonts, and the Garna and
+MediaCube logos from garna.io. Offline it falls back to a system font and shows broken logo images;
+everything else works.
+
+Rebuild it after changing any source file:
+
+```bash
+node build-single-file.js
+```
+
+The build fails loudly if anything didn't get inlined, so a half-built file can't ship by accident.
 
 ---
 
